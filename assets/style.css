@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+:root {
+  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* margin: 0; */
+  font-family: 'Lato', sans-serif;  
+ 
+}
+
+.container {
+  margin: 30px auto;
+  width: 36%;
+  background-color: rgba(246, 232, 232, 0.485);
+  height: 920px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px black;
+ /* margin-top: 90px;*/
+  margin-left: 30%;
+  
+}
+
+.form-control{
+  margin-left: 10px;
+  font-size: 19px;
+
+}
+h1 {
+  letter-spacing: 1px;
+  margin: 0;
+  color: #2e75cc;
+}
+
+h2{
+ margin-top: 110px;
+
+}
+
+
+h3 {
+  border-bottom: 1px solid #bbb;
+  padding-bottom: 10px;
+  margin: 40px 0 10px;
+  margin-left: 9px;
+}
+
+h4 {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.inc-exp-container {
+  background-color: #fff;
+  box-shadow: var(--box-shadow);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.inc-exp-container > div {
+  flex: 1;
+  text-align: center;
+}
+
+.inc-exp-container > div:first-of-type {
+  border-right: 1px solid #dedede;
+}
+
+.money {
+  font-size: 20px;
+  letter-spacing: 1px;
+  margin: 5px 0;
+}
+
+.money.plus {
+  color: #2ecc71;
+}
+
+.money.minus {
+  color: #c0392b;
+}
+
+label {
+  display: inline-block;
+  margin: 10px 0;
+}
+
+input[type='text'],
+input[type='number'] {
+  border: 1px solid #dedede;
+  border-radius: 2px;
+  display: block;
+  font-size: 16px;
+  padding: 10px;
+  width: 100%;
+}
+
+.btn {
+  cursor: pointer;
+  background-color: #180858;
+  box-shadow: var(--box-shadow);
+  color: #fff;
+  border: 0;
+  display: block;
+  font-size: 16px;
+  margin: 10px 0 30px;
+  padding: 10px;
+  width: 100%;
+}
+
+.btn:hover{
+
+  background-color: #180858;
+}
+
+.btn:focus,
+.delete-btn:focus {
+  outline: 0;
+}
+
+.transactions {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 40px;
+}
+
+.transactions li {
+  background-color: #fff;
+  box-shadow: var(--box-shadow);
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.transactions li.plus {
+  border-right: 5px solid #2ecc71;
+}
+
+.transactions li.minus {
+  border-right: 5px solid #c0392b;
+}
+
+.delete-btn {
+  cursor: pointer;
+  background-color: #e74c3c;
+  border: 0;
+  color: #fff;
+  font-size: 20px;
+  line-height: 20px;
+  padding: 2px 5px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-100%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.transactions li:hover .delete-btn {
+  opacity: 1;
+}
+
+header{
+ background-color: rgba(19, 19, 19, 0.758);
+ width: 100vw;
+ height:110px; 
+ box-shadow: 2px 2px 2px black;
+ /* color: white; */
+
+}
+
+a {
+  color: #f9f0f0;
+  text-decoration: none; 
+   margin-left: 50px;
+ 
+}
+
+.logo{
+
+
+  font-weight: bold; /* Destaca o logo */
+}
+
+
+
+.logo span{
+
+  margin-left: 130px;
+  color:rgb(19, 224, 19);
+  font-size: 28px;
+  font-weight: bold; /* Destaca o logo */
+}
+
+.header2,a :hover{
+ color:rgb(19, 224, 19);
+
+}
+
+
+
+
+.exportarExcel:hover{
+  
+  color: rgb(19, 224, 19);
+
+}
+
+
+.header2{
+   
+  margin-top: 40px;
+  font-size: 20px;
+  margin-left: 26%;
+ 
+}
+
+/* .logo{
+
+  color: #f1f5f0;
+  font-size: 26px; /* Tamanho da fonte 
+  font-weight: bold; /* Fonte grossa (negrito) 
+  margin-left: 950px
+
+} */
+
+span{
+
+
+  font-size: 20px; /* Tamanho da fonte */
+  font-weight: bold; /* Fonte grossa (negrito) */
+}
+
+.sr-only{
+  width:15%;
+}
+
+
+
+input[type="date"] {
+  width: 200px;   /* Define a largura desejada */
+  height: 40px;   /* Define a altura desejada */
+  font-size: 16px; /* Opcional: aumenta o tamanho da fonte para preencher melhor o campo */
+  padding: 5px;   /* Opcional: adiciona um pouco de espaçamento interno */
+  border-radius: 10px;
+}
+
+
+.boasvinda{
+
+  font-family: 'Poppins', sans-serif;
+  background-color: rgba(210, 199, 199, 0.34);
+  color: rgb(29, 27, 27);
+  text-align: center;
+  padding: 50px;
+  margin-top: 50px;
+  border-radius: 15px;
+  /* margin-right: 70%; */
+
+}
+
+.BEMVINDO{
+
+  color: #086a31;
+}
+
+.usuariologin,p  {
+
+  font-size: 20px;
+}
+hr{
+  color: black;
+}
+
+
+/* =====colocando a barra entre o link ========== */
+
+.header2 a:hover{
+  color: rgb(19, 224, 19);
+}
+
+.header2 a {
+  color: white; /* Cor do texto */
+  margin: 0 30px; /* Espaçamento ao redor dos links */
+  font-size: 21px; /* Tamanho da fonte */
+
+
+}
+
+.header2 a::after {
+  content: '|'; /* Insere a barra após o link */
+  margin-left: 20px; /* Espaçamento à esquerda da barra */
+  
+}
+
+.header2 a:last-child::after {
+  content: ''; /* Remove a barra do último link */
+}
+
+
+/* ========================== */
+/* img{
+
+  width: 9%;
+  border-radius: 10px;
+  margin-left: 80%; 
+
+} */
+
+
+/* stylo categoria */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.category-container {
+  position: relative;
+  display: inline-block;
+}
+
+.category-input {
+  padding: 8px 16px;
+  border: 1px solid #eae0e0;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 20px;
+  background-color: #fff;
+}
+
+.category-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+  width: 200px;
+  display: none;
+  z-index: 1;
+}
+
+.category-dropdown a {
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #333;
+}
+
+.category-dropdown a:hover {
+  background-color: #f1f1f1;
+}
+
+.category-icon {
+  margin-right: 8px;
+}
+
+.balance,h4{
+
+  margin-left: 45%;
+  font-size: 23px;
+  margin-top: 10px;
+}
+
+.balance{
+  font-size: 35px;
+}
+
+#selected-category{
+
+  margin-left: 15PX;
+}

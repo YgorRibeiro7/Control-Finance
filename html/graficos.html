@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/style.css" />
+    <title>Gráficos de Transações</title>
+    <!-- Link da biblioteca Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+
+      .cabecalho1{
+
+        font-size: 22px;
+        margin-left: 42%;
+        margin-top: 35px;
+      }
+
+      
+.cabecalho1 a::after {
+  content: '|'; /* Insere a barra após o link */
+  margin-left: 20px; /* Espaçamento à esquerda da barra */
+  
+}
+
+.cabecalho1 a:last-child::after {
+  content: ''; /* Remove a barra do último link */
+}
+
+.cabecalho1 :hover{
+
+    color: rgb(19, 224, 19);;
+}
+#transactionChart{
+
+    font-size: 20px;
+}
+
+.logo{
+
+
+font-weight: bold; /* Destaca o logo */
+}
+
+
+
+.logo span{
+
+margin-left: 380px;
+color:rgb(19, 224, 19);
+font-size: 28px;
+font-weight: bold; /* Destaca o logo */
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="cabecalho1">
+            <a href="dashbord.html">Dashbord</a>
+            <a href="historico.html">Histórico</a>
+       
+            <a class="logo"> <span>Control</span> Finance</a>
+        </div>
+    </header>
+
+    <h2>Gráficos de Entradas e Saídas</h2>
+
+    <canvas id="transactionChart"></canvas>
+
+    <script src="../js/graficos.js"></script>
+    
+    <!-- Adiciona o plugin Data Labels -->
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
+</body>
+</html>

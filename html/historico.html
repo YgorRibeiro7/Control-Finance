@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/style.css" />
+    <title>Histórico de Transações</title>
+    <style>
+        .container2 {
+          margin: 30px auto;
+          width: 60%; /* Ajuste de largura para acomodar a tabela */
+          background-color: rgba(246, 232, 232, 0.485);
+          border-radius: 10px;
+          box-shadow: 2px 2px 2px 2px black;
+          text-align: center;
+          padding: 20px;
+        }
+      
+        table {
+          width: 100%;
+          border-collapse: collapse; /* Remove espaçamentos entre as células */
+          margin-top: 20px;
+          background-color: white;
+        }
+      
+        table, th, td {
+          border: 1px solid #000; /* Bordas pretas como em uma planilha */
+        }
+      
+        th, td {
+          padding: 10px; /* Espaçamento interno das células */
+          text-align: left;
+          font-family: Arial, sans-serif;
+          font-size: 14px;
+        }
+      
+        /* th {
+          background-color: #2f1717; /* Cor de fundo para o cabeçalho 
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+       */
+        /* Alterna cores para as linhas, como em uma planilha Excel
+        tr:nth-child(even) {
+          background-color: #b06c6c;
+        } */
+      
+        tr:hover {
+          background-color: #eaeaea; /* Destaque ao passar o mouse sobre uma linha */
+        }
+      
+        /* Estilo para os botões */
+        button {
+          margin-top: 20px;
+          padding: 10px 15px;
+          font-size: 16px;
+          background-color: #4CAF50;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+      
+        button:hover {
+          background-color: #45a049;
+        }
+
+       .cabecalho{
+            display: flex;
+            flex-direction: row;
+            margin-top: 38px;
+            margin-left: 43%;
+            font-size: 23px;
+            
+        }
+         
+        .cabecalho,a:hover{
+            color: #45a049;
+        }
+
+        .cabecalho a::after {
+        content: '|'; /* Insere a barra após o link */
+        margin-left: 20px; /* Espaçamento à esquerda da barra */
+  
+      }
+
+       .cabecalho a:last-child::after {
+        content: ''; /* Remove a barra do último link */
+    }
+
+
+    
+.logo{
+
+
+font-weight: bold; /* Destaca o logo */
+}
+
+
+
+.logo span{
+
+margin-left: 320px;
+color:rgb(19, 224, 19);
+font-size: 28px;
+font-weight: bold; /* Destaca o logo */
+}
+
+
+    
+      </style>
+      
+      <body>
+        <header>
+            <div class="cabecalho">
+              <a href="dashbord.html">Dashbord</a>
+              <a href="graficos.html">Gráficos</a>
+              <a class="logo"> <span>Control</span> Finance</a>
+            </div>
+        </header>
+
+        <h2>Histórico de Transações</h2>
+
+        <div class="container2">
+          
+      
+          <!-- Tabela para mostrar o histórico de transações -->
+          <table id="transaction-history">
+            <thead>
+              <tr>
+                <th>Data</th><br>
+                <th>Descrição</th>
+                <th>Valor</th>
+                <th>Categoria</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- As transações serão inseridas aqui -->
+            </tbody>
+          </table>
+      
+          <!-- Botões -->
+          <button id="clearAllTransactions">Excluir Todos</button>
+          <button id="export-excel">Exportar para Excel</button>
+        </div>
+      
+        <!-- Incluindo a biblioteca SheetJS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    
+ 
+       
+     
+     <script>
+     
+     function setCategory(category) {
+  localStorage.setItem('selectedCategory', category);  // Armazena a categoria no localStorage
+}
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+  const transactionHistoryTable = document.querySelector('#transaction-history tbody');
+  let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+
+  const removeTransaction = id => {
+    transactions = transactions.filter(transaction => transaction.id !== id);
+    updateLocalStorage();
+    renderTransactions();
+  };
+
+  const clearAllTransactions = () => {
+    transactions = [];  // Limpa todas as transações
+    updateLocalStorage();
+    renderTransactions();  // Atualiza a exibição
+    alert('Todos os registros foram excluídos.');
+  };
+
+  const updateLocalStorage = () => {
+    localStorage.setItem('transactions', JSON.stringify(transactions));
+  };
+
+  const renderTransactions = () => {
+    transactionHistoryTable.innerHTML = '';  // Limpa a tabela antes de renderizar novamente
+
+    if (transactions.length === 0) {
+      transactionHistoryTable.innerHTML = '<tr><td colspan="3">Nenhuma transação registrada.</td></tr>';
+    } else {
+      transactions.forEach(transaction => {
+        const row = document.createElement('tr');
+        const operator = transaction.amount < 0 ? '-' : '+';
+        const amountWithoutOperator = Math.abs(transaction.amount);
+        const catego = transaction.category;
+        const transactionDate = new Date(transaction.date).toLocaleDateString('pt-BR', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+
+        row.innerHTML = `
+          <td>${transactionDate}</td>
+          <td>${transaction.name}</td>
+          <td>${operator} R$ ${amountWithoutOperator}</td>
+          <td>${transaction.category}</td>
+       `;
+       
+
+        transactionHistoryTable.appendChild(row);
+      });
+    }
+  };
+
+  renderTransactions();  // Renderiza as transações ao carregar a página
+
+  // Expondo a função para poder ser chamada a partir do botão de exclusão
+  window.removeTransaction = removeTransaction;
+
+  // Função para exportar a tabela para Excel
+  function exportTableToExcel() {
+    const table = document.getElementById('transaction-history'); // Obtém a tabela
+    const workbook = XLSX.utils.table_to_book(table, { sheet: 'Transações' });
+    XLSX.writeFile(workbook, 'historico_transacoes.xlsx');
+  }
+
+  // Ouvinte de evento para o botão de exclusão de todas as transações
+  document.getElementById('clearAllTransactions').addEventListener('click', clearAllTransactions);
+
+  // Ouvinte de evento para o botão de exportação
+  document.getElementById('export-excel').addEventListener('click', exportTableToExcel);
+});
+
+// ====================================================================
+// Adiciona uma nova transação
+const addTransaction = (name, amount, date) => {
+  // Recupera a categoria do localStorage ou usa 'Sem categoria' por padrão
+  const category = localStorage.getItem('selectedCategory') || 'Sem categoria'; 
+  
+  const transaction = {
+    id: Date.now(),
+    name,
+    amount: parseFloat(amount),  // Certifique-se de que 'amount' seja um número
+    date,
+    category
+  };
+
+  // Adiciona a transação ao array de transações
+  transactions.push(transaction);
+
+  // Armazena no localStorage
+  updateLocalStorage();
+
+  // Atualiza a exibição das transações
+  renderTransactions();
+
+  // Remove a categoria selecionada do localStorage para a próxima transação
+  localStorage.removeItem('selectedCategory');
+};
+
+// Atualiza o localStorage com as transações
+const updateLocalStorage = () => {
+  localStorage.setItem('transactions', JSON.stringify(transactions));
+};
+
+// Renderiza as transações na tabela
+const renderTransactions = () => {
+  const transactionHistoryTable = document.querySelector('#transaction-history tbody');
+  transactionHistoryTable.innerHTML = '';  // Limpa a tabela
+
+  if (transactions.length === 0) {
+    transactionHistoryTable.innerHTML = '<tr><td colspan="4">Nenhuma transação registrada.</td></tr>';
+  } else {
+    transactions.forEach(transaction => {
+      const row = document.createElement('tr');
+      const operator = transaction.amount < 0 ? '-' : '+';
+      const amountWithoutOperator = Math.abs(transaction.amount).toFixed(2);  // Formata o valor
+      const transactionDate = new Date(transaction.date).toLocaleDateString('pt-BR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+
+      row.innerHTML = `
+        <td>${transactionDate}</td>
+        <td>${transaction.name}</td>
+        <td>${operator} R$ ${amountWithoutOperator}</td>
+        <td>${transaction.category}</td>
+      `;
+
+      transactionHistoryTable.appendChild(row);
+    });
+  }
+};
+
+// Renderiza as transações ao carregar a página
+document.addEventListener('DOMContentLoaded', () => {
+  transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+  renderTransactions();
+});
+
+  
+       
+      </script>
+    </body>
+      
+</html>

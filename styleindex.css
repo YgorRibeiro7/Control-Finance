@@ -1,0 +1,588 @@
+/* ESTILO GERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  
+  }
+  
+  body {
+    background-color: rgb(0, 0, 0);
+    height: 100vh;
+  
+  }
+  
+  
+  
+  img {
+    width: 130px;
+  }
+  
+  
+  
+  
+  .interface {
+    
+    max-width: 1280px;
+    margin: 0 auto;
+    
+  }
+  
+  
+  .flex {
+    display: flex;
+  }
+  
+  .btn-contato button {
+    /* chamando a classe btn-contato, e button para fazer o stilo*/
+    padding: 10px 40px;
+    font-size: 18px;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: rgb(19, 224, 19);
+    border: 0;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .7s;
+    /*quando passar o mouse no botão a transição ficará mais leve*/
+  }
+  
+  h2.titulo {
+    color: white;
+    font-size: 38px;
+    text-align: center;
+  
+  }
+  
+  h2.titulo span {
+    color: rgb(19, 224, 19);
+  
+  }
+  
+  button:hover,
+  form .btn-enviar input[type=submit]:hover {
+    /*quando o usuario passar o mouse em cima, irá mudar de cor do  botton*/
+    box-shadow: 0px 0px 8px rgb(0, 248, 0);
+    transform: scale(0.95);
+    /*dá um zum no texto*/
+    transition: .7s;
+  }
+  
+  /* ESTILO DO CABEÇARIO */
+  header {
+  
+    padding: 40PX 4%;
+  }
+  
+  
+  
+  header>.interface {
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  
+  
+  header a {
+    /* todos os elementos que tem a letra A será modificado */
+    color: rgb(177, 177, 177);
+    text-decoration: none;
+    /*retirando as linhas sublinhado do texto*/
+    display: inline-block;
+    /*converti o cod para que possa funcionar o (transform: scale(1.2)) no header a:hover*/
+    transition: .5s;
+  }
+  
+  
+  header a:hover {
+    /*quando o usuario passar o mouse em cima, irá mudar de cor*/
+    color: white;
+    transform: scale(1.2);
+    /*dá um zum no texto, porem para funcionar foi adiocnado um (display: inline-block) no header a{}*/
+  
+  }
+  
+  
+  
+  header nav ul {
+    list-style-type: none;
+    /*removendo a bolinha da lsita*/
+  }
+  
+  
+  
+  
+  header nav ul li {
+    display: inline-block;
+    /*dá o espaçamento entre os elementos*/
+    padding: 0 40px;
+    /*deu um espaçamento de 40px entre os elementos*/
+  }
+  
+  
+  /* ESTILO DO TOPO DO SITE */
+  
+  section .topo-do-site {
+    padding: 40px 4%;
+  }
+  
+  section .topo-do-site.flex {
+    /*centralizando o texto */
+    align-items: center;
+    justify-content: center;
+    
+  
+  
+  }
+  
+  .topo-do-site h1 {
+    color: white;
+    font-size: 42px;
+    line-height: 40px;
+    margin-top: 160px;
+  }
+  
+  
+  
+  
+  .topo-do-site .txt-topo-site h1 span {
+    /*mudando a cor do ponto do h1*/
+  
+    color: rgb(10, 255, 10);
+  }
+  
+  
+  
+  .topo-do-site .txt-topo-site p {
+    /*mudando a cor do paragrafo*/
+    color: white;
+    margin: 40px 0;
+  
+  }
+  
+  
+  .topo-do-site .img-topo-site img {
+    /*deixando a imagens flutuando*/
+    position: relative;
+    height: 20vw;
+    width: 38vh;
+    animation: flutuar 2s ease-in-out infinite alternate;
+    /*O tempo da animação seja concluida 2s ,ease-in-out = começa suave, rapido no meio termina suave, infinito,alternate a img irá caminho do 0 até o 100, 100 até o 0*/
+    margin-left: 150px;
+    border-radius: 20px 10px 5px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.582);
+   
+    
+  }
+  
+  
+  
+  @keyframes flutuar {
+  
+    /*animação do css*/
+    0% {
+      top: 0;
+      /*distancia do top é igual a 0*/
+  
+    }
+  
+    /*como a imagem ficará na pagina inicial do site*/
+  
+    100% {
+      top: 30px;
+  
+    }
+  
+    /*quando a animação estiver acabando*/
+  }
+  
+  /*estilo da especialidades*/
+  
+  section.especiliadades {
+  
+    padding: 40px 4%;
+  
+  }
+  
+  section.especiliadades .flex {
+    gap: 60px;
+  }
+  
+  .especiliadades .especialidades-box {
+    /*ajeitando a cor e o espaçamento do lorem, junto com uma borda*/
+    color: rgb(240, 240, 240);
+    padding: 40px;
+    border-radius: 20px;
+    /*border: 2px solid white;*/
+    margin-top: 46px;
+    transition: .2s;
+    /* O zom fica mais lento ao passar o mouse*/
+  }
+  
+  .especiliadades .especialidades-box:hover {
+    /*Ao passar o mouse acontece um zoom nas bordas*/
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.582);
+  }
+  
+  .especiliadades .especialidades-box i {
+    font-size: 70px;
+    color: rgb(10, 255, 10);
+    text-shadow: 2px 2px 2px rgb(29, 207, 68);
+  }
+  
+  .especiliadades .especialidades-box h3 {
+    /*alterando o espaço da font WEB SITE-LOJA ONLINE-BLOG*/
+    font-size: 28px;
+    margin: 15px 0;
+    color: white;
+  }
+  
+  /*ESTILO SOBRE*/
+  section.sobre {
+    padding: 80px 4%;
+  
+  }
+  
+  section.sobre .flex {
+    align-items: center;
+    gap: 60px;
+  }
+  
+  .sobre .txt-sobre {
+    color: white;
+  
+  }
+  
+  .sobre .txt-sobre h2 {
+    font-size: 40px;
+    line-height: 40px;
+    margin-bottom: 20px;
+  
+  }
+  
+  .sobre .txt-sobre h2 span {
+    color: #00ff08;
+    display: block;
+  
+  }
+  
+  .sobre .txt-sobre p {
+    /*alinhando o texto lorem*/
+    margin: 20px 0;
+    text-align: justify;
+  
+  }
+  
+  .btn-social button {
+    /*estilizando os icones, instagram, face..*/
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    /*tirando a borda*/
+    background-color: #00ff08;
+    font-size: 22px;
+    /*aumentando o tamanho dos icones*/
+    cursor: pointer;
+    /*quando passar o mouse em cima, irá virar o dedinho*/
+    margin: 0 6px;
+    transition: .2s;
+  
+  }
+  
+  .sobre .imgg img {
+    width: 22vw;
+    border-radius: 20px;
+  }
+  
+  /*STILO PORTIFÓLIO*/
+  section.portfolio {
+    padding: 80px 4%;
+    box-shadow: 0 0 40px 10px rgb(146, 143, 143);
+    /* deixando com sombra degradê em cima do "meu portifolio"*/
+  }
+  
+  
+  section.portfolio .flex {
+  
+    gap: 80px;
+    /*separei as divis/*/
+    margin-top: 60px;
+  }
+  
+  /*alinhei as divis e apliquei o efeito de rolagem*/
+  .img-port {
+    width: 860px;
+    height: 360px;
+    background-color: #00ff08;
+    background-size: cover;
+    background-position: 100% 0%;
+    transition: 8s;
+    cursor: pointer;
+    /*quando passo o mouse em cima, fica com o dedinnho em cima*/
+    border-radius: 50px;
+    position: relative;
+  
+  }
+  
+  /*apliquei o efeito de rolagem*/
+  .img-port:hover {
+  
+    background-position: 100% 100%;
+  
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #08080865;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 180px;
+    font-size: 24px;
+    font-weight: 500;
+    color: white;
+    opacity: 0;
+    transition: 1s;
+  }
+  
+  .overlay:hover {
+    opacity: 1;
+  
+  }
+  
+  /*ESTILO DO FORMULARIO*/
+  
+  section.formulario {
+    padding: 80px 4%;
+  
+  }
+  
+  /*alinhando o formulario*/
+  form {
+  
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 40px;
+  }
+  
+  /*estilizando o formulario*/
+  form input,
+  form textarea {
+    width: 100%;
+    background-color: rgb(66, 66, 66);
+    border: 0;
+    outline: 0;
+    padding: 20px 15px;
+    border-radius: 19px;
+    color: white;
+    font-size: 17px;
+  
+  }
+  /*colocando a cor verde nos caracter no fundo*/
+  form input::placeholder {
+    color: rgba(172, 255, 47, 0.445);
+  
+  }
+  
+  /*deixando a msg de texto maior...*/
+  form textarea::placeholder {
+  
+    resize: none;
+    max-height: 300px;
+    height: 200px;
+    color: rgba(172, 255, 47, 0.445);
+  }
+  
+  form .btn-enviar {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  /*alterando o botão de enviar submit*/
+  form .btn-enviar input[type=submit] {
+    width: 120px;
+    background-color: #00ff08;
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 2s;
+  }
+  
+  /* ESTILO RODAPÊ */
+  
+  footer {
+    padding: 40px 4%;
+    box-shadow: 0 0 40px 10px rgb(146, 143, 143);
+    /* deixando com sombra degradê em cima do "meu portifolio"*/
+  }
+  
+  
+  footer .flex {
+    justify-content: space-between;
+  
+  }
+  
+  footer .line-footer {
+    padding: 20px 0;
+  
+  
+  }
+  
+  .borda {
+    border-top: 2px solid #00ff08;
+    ;
+  }
+  
+  footer .line-footer p i {
+    color: #00ff08;
+    font-size: 22px;
+  }
+  
+  footer .line-footer p a {
+    color: white;
+  
+  }
+  
+  /* DEIXANDO O  SITE RESPONSIVEL */
+  
+  
+  /* menos de 1020px o site ficará responsivel */
+  @media screen and (max-width:1020px) {
+  
+    /* CLASSE GERAL */
+    .flex {
+     flex-direction: column;
+    }
+  
+    h2.titulo {
+      font-size: 30px;
+      line-height: 30PX;
+    
+    }
+  
+    /* CABEÇALHO */
+  
+    .menu-desktop,
+    .btn-contato {
+      display: none;
+     
+    }
+  
+    /* TOPO DO SITE */
+  
+    section .topo-do-site.flex {
+      gap: 40px;
+    }
+  
+    section .topo-do-site {
+      padding: 20px 8%;
+    }
+  
+  
+    .topo-do-site h1 {
+      font-size: 32px;
+  
+    }
+  
+    .topo-do-site .img-topo-site img {
+      height: 50%;
+      margin: 0 auto;
+      margin-left: 95px;
+      
+     
+    }
+  
+    .sobre .imgg img {
+      height: 100px;
+    }
+  
+    section .topo-do-site.flex {
+      gap: 40px;
+  
+    }
+  
+    /* ESPECIALIDADES */
+    section.especiliadades {
+      padding: 40px 9%;
+  
+    }
+  
+     /*estilo do  sobre*/
+  section.sobre {
+    padding: 80px 8%;
+  
+  }
+  
+   .sobre .txt-sobre h2 {
+    font-size: 34px;
+    line-height: 35px;
+    text-align: center;
+  
+  }
+  .btn-social{ /*Centralizando  os icones instagram,facebook...*/
+  
+    text-align: center;
+  }
+  
+  .img-sobre img{
+    width: 100%;
+  }
+  
+  /* PORTFOLIO */
+  section.portfolio{
+  padding: 80px 8%;
+  
+  }
+  
+  .img-port{
+    width: 100%;
+    max-width:360px;
+    margin: 0 auto;
+  
+  }
+  
+  footer .line-footer{
+    text-align: center;
+  }
+
+  
+  }
+
+  .CONTROl{
+    font-size: 26px; /* Tamanho da fonte */
+    font-weight: bold; /* Fonte grossa (negrito) */
+    
+    
+  }
+
+  span{
+    font-size: 26px; /* Tamanho da fonte */
+    font-weight: bold; /* Fonte grossa (negrito) */
+    color: #00ff08;
+
+  }
+
+li{
+
+  margin-left: 180px;
+}
+
+
+.img-topo-site img {
+
+  margin-top: 50px;
+}

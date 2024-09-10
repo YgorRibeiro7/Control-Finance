@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/style.css">
+    <title>Controle de Despesas</title>
+    <style>
+      
+
+
+    </style>
+</head>
+<body>
+
+    <header>
+        
+        <div class="header2">
+            
+            <a href="index.html">Sair </a>             
+            <a href="#">Power BI</a>
+            <a class="exportarExcel"  id="exportBtn">Exportar Excel</a>
+            <a href="historico.html">Histórico</a>
+            <a href="graficos.html">Gráficos</a>
+            <a class="logo"> <span>Control</span> Finance</a>
+            <!-- <img src="../imagens/Leonardo_Phoenix_Design_a_modern_and_sleek_logo_for_CONTROLE_F_0.jpg" alt=""> -->
+        </div>
+   
+       
+       
+
+    </header>
+
+    <body>
+      
+        <div class="boasvinda">
+           <h1 class="BEMVINDO">Bem-vindo à Dashboard</h1>
+            <div class="usuarciologin">
+              <p id="usuario"></p>
+              <p id="dataLogin"></p>
+              <p id="localizacao"></p>
+              <p id="temperatura"></p>
+              <p id="idusuario"></p>
+           
+             
+            </div>
+        </div>
+    <br><br>
+
+    <div>
+      <h2>Instruções</h2>
+        
+           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis ipsam, ex similique consequuntur aspernatur id doloribus quas amet aperiam architecto porro est, quo alias debitis illum neque distinctio    error aliquid?<br>
+           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro voluptatibus officia animi culpa impedit hic aspernatur eos natus nobis odio fugit, atque molestiae cum similique alias iusto laudantium unde    assumenda!<br>
+           Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident perspiciatis, laboriosam rerum dolores maiores voluptate distinctio eligendi culpa cum. Maxime fugit incidunt asperiores voluptatem debitis    aspernatur ad quasi ipsum mollitia?</p>
+    </div>
+        <h2>Controle de Despesas</h2>
+        <div class="container">
+            <h4>Saldo Atual</h4>
+            <h1 id="balance" class="balance">R$ 0.00</h1>
+
+            <div class="inc-exp-container">
+                <div>
+                    <h4>Receitas</h4>
+                    <p id="money-plus" class="money plus">+ R$0.00</p>
+                </div>
+                <div>
+                    <h4>Despesas</h4>
+                    <p id="money-minus" class="money minus">- R$0.00</p>
+                </div>
+
+                
+            </div>
+             
+            <h3>Transações</h3>
+            <ul id="transactions" class="transactions"></ul>
+      
+            <h3>Adicionar Transação</h3>
+            <form id="form">
+                <div class="form-control">
+                    <label for="text"><span>Nome:</span></label>
+                    <input type="text" id="text" placeholder="Nome da transação" />
+                </div>
+
+                <br>
+
+                <div class="form-control">
+                    <label for="date"><span>Data:</span></label>
+                    <input type="date" id="date" name="date" />
+                </div>
+
+                <br>
+
+                <div class="category-container">
+                  <h3>Categoria:</h3>
+                    <div class="category-input">
+                      Buscar a categoria... <span class="category-icon">▼</span>
+                    </div>
+                    <br>
+                    <div class="category-dropdown">
+                        <a href="#" onclick="setCategory('Empréstimos'); event.preventDefault();"><span class="category-icon">$</span> Empréstimos</a>
+                        <a href="#" onclick="setCategory('Investimentos'); event.preventDefault();"><span class="category-icon">🏦</span> Investimentos</a>
+                        <a href="#" onclick="setCategory('Outras receitas'); event.preventDefault();"><span class="category-icon">✨</span> Outras receitas</a>
+                        <a href="#" onclick="setCategory('Salário'); event.preventDefault();"><span class="category-icon">💰</span> Salário</a>
+                    </div>
+                      <!-- Campo oculto para armazenar a categoria -->
+                      <input type="hidden" id="categoria" name="categoria" value="">
+                </div>
+                 
+                   
+                     <!-- Elemento para exibir a categoria selecionada -->
+                <div id="selected-category">
+                    Categoria Selecionada: Nenhuma
+                </div>
+
+                  <br>
+                <div class="form-control">
+                    <label for="amount"> <span>Valor:</span></label>
+                    <input type="number" id="amount" placeholder="Valor da transação" />
+                </div>
+
+                <button class="btn" type="submit">Adicionar</button>
+            </form>
+        </div>
+
+    </body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="../js/script.js"></script>
+
+    <script>
+
+
+function setCategory(category) {
+  document.getElementById('categoria').value = category;
+  localStorage.setItem('selectedCategory', category); // Armazena a categoria no localStorage
+}
+
+
+
+
+        // Exibe as informações do usuário
+        document.getElementById('usuario').innerText = 'Usuário: ' + localStorage.getItem('usuario');
+        document.getElementById('dataLogin').innerText = 'Data de Login: ' + localStorage.getItem('dataLogin');
+        document.getElementById('idusuario').innerText = 'ID do Usuário: ' + localStorage.getItem('idusuario');
+
+        // Obtém a localização
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+
+                document.getElementById('localizacao').innerText = 'Localização: Latitude ' + latitude + ', Longitude ' + longitude;
+
+                // Obtém a temperatura usando a API OpenWeatherMap
+                var apiKey = 'YOUR_API_KEY'; // Substitua com sua chave da API
+                var url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        var temperatura = data.main.temp;
+                        document.getElementById('temperatura').innerText = 'Temperatura: ' + temperatura + '°C';
+                    })
+                    .catch(error => console.error('Erro ao obter a temperatura:', error));
+            }, function(error) {
+                console.error('Erro ao obter a localização:', error);
+            });
+        } else {
+            document.getElementById('localizacao').innerText = 'Geolocalização não é suportada pelo navegador.';
+        }
+
+   // script de categoria
+   const categoryInput = document.querySelector('.category-input');
+const categoryDropdown = document.querySelector('.category-dropdown');
+const selectedCategoryDisplay = document.getElementById('selected-category');
+
+// Mostra ou esconde o dropdown ao clicar no input
+categoryInput.addEventListener('click', () => {
+  categoryDropdown.style.display = categoryDropdown.style.display === 'none' ? 'block' : 'none';
+});
+
+// Oculta o dropdown ao clicar fora da área da categoria
+window.addEventListener('click', (event) => {
+  if (!event.target.closest('.category-container')) {
+    categoryDropdown.style.display = 'none';
+  }
+});
+
+// Adiciona um evento a cada item da lista para capturar a seleção da categoria
+document.querySelectorAll('.category-dropdown a').forEach(item => {
+  item.addEventListener('click', (event) => {
+    event.preventDefault(); // Evita o comportamento padrão do link
+    
+    // Pega o texto da categoria clicada
+    const selectedCategory = event.target.innerText;
+    
+    // Exibe a categoria selecionada no elemento HTML
+    selectedCategoryDisplay.innerText = `Categoria Selecionada: ${selectedCategory}`;
+    
+    // Oculta o dropdown após a seleção
+    categoryDropdown.style.display = 'none';
+  });
+});
+
+
+    
+
+
+    </script>
+   
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  <link rel="stylesheet" href="../css/signup.css" />
+    <title>cadastro</title>
+
+    <style>
+     
+     *{
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+     }
+      body{
+       background-color: black;
+       background-repeat: no-repeat;
+       background-size: cover;
+       background-attachment: fixed;
+      }
+
+      .container{
+
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: 350px;
+    
+   
+      }
+
+      .card{
+
+        background-color: aliceblue;
+        padding: 30px;
+        border-radius: 4%;
+        box-shadow: 3px 3px 1px 0px white;
+        width: 16%;
+      }
+
+      h1{
+
+        text-align: center;
+        margin-bottom: 20px;
+        color: rgb(5, 168, 32);
+        font-size: 34px;
+      
+      }
+
+      .label-float input{
+
+       width: 100%;
+       padding: 5px 5px;
+       display: inline-block;
+       border: 0;
+       border-bottom: 2px solid rgb(9, 139, 31);
+       background-color: transparent;
+       outline: none;
+       min-width: 180px;
+       font-size: 16px;
+       transition: all .3s ease-out;
+       border-radius: 0;
+     
+
+      }
+
+       .label-float{
+        position: relative;
+        padding-top: 13px;
+        margin-top: 4%;
+        margin-bottom: 5%;
+
+      }
+
+
+      .label-float input:focus{
+        border-bottom: 2px solid rgb(168, 1, 23);
+      }
+
+
+    
+
+     button{
+        background-color: transparent;
+        padding: 7px;
+        font-weight: bold;
+        font-size: 12pt;
+        margin-top: 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        outline: none;
+        transition:  all .4s ease-out;
+     }
+
+     button:hover{
+
+        background-color: rgba(140, 247, 90, 0.514);
+       
+     }
+
+     .fa-eye{
+
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    cursor: pointer;
+    color: #551122;
+     }
+
+
+     #msgError{
+
+        text-align: center;
+        color: #551122;
+        background-color: aliceblue;
+        padding: 10px;
+        border-radius: 4px;
+        display: none;
+     }
+
+     #msgSuccess{
+    text-align: center;
+    color: #135511;
+    background-color: aliceblue;
+    padding: 10px;
+    border-radius: 4px;
+    display: none;
+
+     }
+
+      .voltar{
+
+        text-decoration: none;
+        font-weight: bold;
+        cursor: pointer;
+        margin-left: 230px;
+        background-color: #dae6da;
+         
+    
+      }
+
+    </style>
+</head>
+<body>
+   
+    <div class="container">
+        <div class="card">
+          <h1>Cadastrar</h1>
+  
+          <div id="msgError"></div>
+          <div id="msgSuccess"></div>
+  
+          <div class="label-float">
+            <label id="labelNome" for="nome">Nome</label>
+            <input type="text" id="nome" placeholder=" " required />
+            
+          </div>
+  
+          <div class="label-float">
+            <label id="labelUsuario" for="usuario">Usuário</label>
+            <input type="text" id="usuario" placeholder=" " required />
+            
+          </div>
+  
+          <div class="label-float">
+            <label id="labelSenha" for="senha">Senha</label>
+            <input type="password" id="senha" placeholder=" " required />    
+            <i id="verSenha" class="fa fa-eye" aria-hidden="true"></i>
+          </div>
+  
+          <div class="label-float">
+            <label id="labelConfirmSenha" for="confirmSenha"
+            >Confirmar Senha</label>
+            <input type="password" id="confirmSenha" placeholder=" " required />
+          
+            <i id="verConfirmSenha" class="fa fa-eye" aria-hidden="true"></i>
+          </div>
+  
+          <div class="justify-center">
+            <button onclick="cadastrar()">Cadastrar</button> 
+            <a class="voltar "href="index.html">Voltar</a>
+          </div>
+        </div>
+      </div>
+  
+      <script src="../js/signup.js"></script>
+    </body>
+</body>
+</html>

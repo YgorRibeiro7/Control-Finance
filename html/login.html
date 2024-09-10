@@ -214,8 +214,19 @@ a{
     
     // validação de senha e login
 
-    if(( login == "ygor" || login =="carol" )&& senha =="29061993"){
+    if(( login == "patrick" || login =="carol" )&& senha =="29061993"){
        alert('sucesso')
+        // Armazena as informações no localStorage
+       localStorage.setItem('usuario', login);       
+       localStorage.setItem('dataLogin', new Date().toLocaleString());
+
+       if(login == "patrick"){
+       localStorage.setItem('idusuario', 1)
+       }
+      else{
+        localStorage.setItem('idusuario', 2)
+      }
+       // Redireciona para a página dashboard
        location.href= "dashbord.html"
 
     }else{
@@ -225,9 +236,11 @@ a{
     }
       
 
-    
 
    }
+
+
+   
 
   </script>
     
