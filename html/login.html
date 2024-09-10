@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+  <style>
+
+   *{
+
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+font-family:  'Poppins', sans-serif;
+   }
+
+   h3{
+    color: white;
+   }
+   body{
+   display: flex;
+   margin-top: 300px;
+   justify-content: center;
+   width: 100%;
+   height: 100%;
+   background-color: rgb(22, 20, 20);
+
+   }
+
+   .box::before{
+
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 420px;
+    background:  linear-gradient( 0deg,transparent
+    , transparent, rgb(19, 224, 19), rgb(19, 224, 19), rgb(19, 224, 19));
+    z-index: 1;
+    transform-origin:  bottom right;
+    animation:  animate 6s linear infinite;
+   }
+
+   .box::after{
+
+content: '';
+position: absolute;
+top: -50%;
+left: -50%;
+width: 380px;
+height: 420px;
+background:  linear-gradient( 0deg,transparent
+, transparent,  rgb(19, 224, 19), rgb(19, 224, 19), rgb(19, 224, 19));
+z-index: 1;
+transform-origin:  bottom right;
+animation:  animate 6s linear infinite;
+animation-delay: -3s;
+}
+
+.borderLine {
+  position: absolute;
+  top:0;
+  inset:0;
+}
+
+.borderLine::before {
+  content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 420px;
+    background:  linear-gradient( 0deg,transparent
+    , transparent, #ff2770, #ff2770, #ff2770);
+    z-index: 1;
+    transform-origin:  bottom right;
+    animation:  animate 6s linear infinite;
+    animation-delay: -1.5s;
+
+}
+
+
+.borderLine::after {
+  content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 420px;
+    background:  linear-gradient( 0deg,transparent
+    , transparent, #ff2770, #ff2770, #ff2770);
+    z-index: 1;
+    transform-origin:  bottom right;
+    animation:  animate 6s linear infinite;
+    animation-delay: -4.5s;
+
+}
+
+   @keyframes animate 
+   { 
+     0%
+     {
+
+      transform: rotate(0deg);
+     }
+     100%
+     {
+      transform:  rotate(360deg);
+     }
+
+   }
+
+
+   /*form{
+    width: 300px;
+    margin: 200px auto;
+    text-align: center;  
+   }*/
+  
+   input{ 
+    
+     display: block;
+     margin: 10px auto;
+     width: 250px;
+     height: 30px;
+    }
+  .box{
+
+    position: relative;
+    width: 380px;
+    height: 420px;
+    background: #23242ae4;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .box form{
+   position: absolute;
+   inset: 4px;
+   background: #343333;
+   padding:  50px 40px;
+   border-radius: 9px;
+   z-index: 2;
+   display: flex;
+   flex-direction: column;
+  }
+
+
+  /*.box form h2{
+
+color: white;
+font-weight: 500;
+text-align: center;
+letter-spacing: 0.1em;
+}*/
+
+.box form .inputBox{
+  position:  relative;
+  width: 300px;
+  margin-top: 35px;
+  
+}
+
+.box form  .inputBox input
+{
+  position: relative;
+  width:100%;
+  height: 3%;
+  padding: 20px 10px 10px ;
+  background: transparent;
+  outline:  none;
+  box-shadow: none ;
+  color: #ffffffeb;
+  letter-spacing:0.05em ;
+  transition: 0.5s;
+  z-index: 10;
+}
+a{
+  color: white;
+  text-decoration: none;
+}
+
+  </style>
+
+</head>
+<header>
+
+</header>
+<body>
+
+  
+   <div class="box">
+    <span class="borderLine"></span>
+    <form>
+      <h3>Login</h3>
+       <div class="inputBox">
+        <input type="text"placeholder="Login" id ="login">
+        <div class="inputBox">
+         <input type="password"placeholder="Senha" id ="senha">
+         <input type="submit" onclick="logar(); return false">
+         <a href="index.html">Voltar</a>
+        </div>
+       </div>
+    </form>
+   </div>
+
+  <script>
+
+   function logar(){
+
+    var login = document.getElementById('login').value;
+    var senha = document.getElementById ('senha').value;
+    
+    // validação de senha e login
+
+    if(( login == "ygor" || login =="carol" )&& senha =="29061993"){
+       alert('sucesso')
+       location.href= "dashbord.html"
+
+    }else{
+
+     alert('Usuário ou senha incorretos');
+
+    }
+      
+
+    
+
+   }
+
+  </script>
+    
+</body>
+</html>

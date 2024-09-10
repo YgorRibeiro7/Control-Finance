@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+
+    <style>
+     *{
+     box-sizing: border-box;
+    
+     }
+      body{
+       width: 100vw;
+       height: 100vh;   
+       background-image: linear-gradient(to right top, #051937, #1d4c61, #578284, #9fb9ac, #ebf0e0);
+      }
+
+      form{
+       width: 300px;
+       margin:200px auto;
+       text-align:  center;
+       background-color: #05193773;
+       height: 350px;
+       box-shadow: 2px 2px 2px black;
+       border-radius: 30px;
+      }
+
+input{
+
+    display: block;
+    margin: 10px auto;
+    width: 250px;
+    height: 50px;
+    border-radius: 15px;
+}
+.botao:hover{
+     background: #c8d7f0d2;
+
+}
+h3{
+
+    color: white;
+}
+    
+
+    </style>
+</head>
+<body>
+    <form> 
+         <h3> Login</h3>
+         <input type="text" placeholder="Login" id="login">
+         <input type="password" placeholder="Senha" id="senha">
+         <input class="botao" type="submit" onclick="logar(); return false">  <!--chamando a função LOGAR(), quando clicar no botão enviar, o alerta será ativado-->
+    </form>
+
+
+
+    <script>
+    // criando uma função para logar
+    function logar(){
+
+    var login = document.getElementById('login').value;
+    var senha = document.getElementById('senha').value;
+
+    // condição para validar o email e senha 
+
+    if(login=="admin" && senha == "ygor290693" ){
+       alert('Dados corretos');
+       location.href= "index.html";
+    }else {
+      alert('Usuário ou senja incorretos');
+
+    }
+
+    }
+
+    </script>
+</body>
+</html>
